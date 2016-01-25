@@ -22,7 +22,7 @@ namespace ArgumentyIFakty
     public partial class MainForm : Form
     {
         static IArticleService _articleService;
-        static IArticlesWithMigraService _migraService;
+       
 
 
         static IArticleService articleService
@@ -34,15 +34,7 @@ namespace ArgumentyIFakty
                 return _articleService;
             }
         }
-        static IArticlesWithMigraService migraService
-        {
-            get
-            {
-                if (_migraService == null)
-                    _migraService = new MigraArticleService();
-                return _migraService;
-            }
-        }
+        
         public MainForm()
         {
             InitializeComponent();
@@ -81,23 +73,7 @@ namespace ArgumentyIFakty
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            var articles = migraService.GetAll();
-            foreach (ArticlesWithWordMigra a in articles) {
-                PdfDocument pdf = new PdfDocument();
-                pdf.Info.Title = a.DatePublished.ToShortDateString();
-                XPdfFontOptions options = new XPdfFontOptions(PdfFontEncoding.Unicode, PdfFontEmbedding.Always);
-                XFont font = new XFont("Times New Roman", 12, XFontStyle.Regular, options);
-                PdfPage pdfPage = pdf.AddPage();
-                XGraphics graph = XGraphics.FromPdfPage(pdfPage);
-                XTextFormatter tf = new XTextFormatter(graph);
-              
-                tf.Alignment = XParagraphAlignment.Left;
-                tf.DrawString(a.Context, font, XBrushes.Black, new XRect(40, 40, pdfPage.Width -70, pdfPage.Height-70), XStringFormats.TopLeft);
-                string pdfFilename = a.Title+".pdf";
-                pdf.Save(pdfFilename);
-                Process.Start(pdfFilename);
-            }
+            PDFServices.CreatePDFDocuments();
         }
     }
 }

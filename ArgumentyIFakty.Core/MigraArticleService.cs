@@ -24,7 +24,8 @@ namespace ArgumentyIFakty.Core
 
         public List<ArticlesWithWordMigra> GetAll()
         {
-            return db.ArticlesWithWordMigras.Where(x=>x.Author == "Лидия Юдина").ToList();
+            //return db.ArticlesWithWordMigras.Where(x=>x.Author == "Лидия Юдина").ToList();
+            return db.ArticlesWithWordMigras.ToList();
         }
 
         public ArticlesWithWordMigra GetById(int articleId)

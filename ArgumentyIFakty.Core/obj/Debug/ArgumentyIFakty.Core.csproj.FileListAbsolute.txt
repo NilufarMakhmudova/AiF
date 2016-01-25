@@ -26,3 +26,12 @@ C:\Users\nmakhmudova\Desktop\ResearchApplications\ArgumentyIFakty\ArgumentyIFakt
 C:\Users\nmakhmudova\Desktop\ResearchApplications\ArgumentyIFakty\ArgumentyIFakty.Core\obj\Debug\ArgumentyIFakty.Core.csprojResolveAssemblyReference.cache
 C:\Users\nmakhmudova\Desktop\ResearchApplications\ArgumentyIFakty\ArgumentyIFakty.Core\obj\Debug\ArgumentyIFakty.Core.dll
 C:\Users\nmakhmudova\Desktop\ResearchApplications\ArgumentyIFakty\ArgumentyIFakty.Core\obj\Debug\ArgumentyIFakty.Core.pdb
+C:\Users\nmakhmudova\Desktop\ResearchApplications\ArgumentyIFakty\ArgumentyIFakty.Core\bin\Debug\MigraDoc.DocumentObjectModel.dll
+C:\Users\nmakhmudova\Desktop\ResearchApplications\ArgumentyIFakty\ArgumentyIFakty.Core\bin\Debug\MigraDoc.Rendering.dll
+C:\Users\nmakhmudova\Desktop\ResearchApplications\ArgumentyIFakty\ArgumentyIFakty.Core\bin\Debug\MigraDoc.RtfRendering.dll
+C:\Users\nmakhmudova\Desktop\ResearchApplications\ArgumentyIFakty\ArgumentyIFakty.Core\bin\Debug\PdfSharp.Charting.dll
+C:\Users\nmakhmudova\Desktop\ResearchApplications\ArgumentyIFakty\ArgumentyIFakty.Core\bin\Debug\PdfSharp.dll
+C:\Users\nmakhmudova\Desktop\ResearchApplications\ArgumentyIFakty\ArgumentyIFakty.Core\bin\Debug\de\MigraDoc.DocumentObjectModel.resources.dll
+C:\Users\nmakhmudova\Desktop\ResearchApplications\ArgumentyIFakty\ArgumentyIFakty.Core\bin\Debug\de\MigraDoc.Rendering.resources.dll
+C:\Users\nmakhmudova\Desktop\ResearchApplications\ArgumentyIFakty\ArgumentyIFakty.Core\bin\Debug\de\MigraDoc.RtfRendering.resources.dll
+C:\Users\nmakhmudova\Desktop\ResearchApplications\ArgumentyIFakty\ArgumentyIFakty.Core\bin\Debug\de\PdfSharp.resources.dll
