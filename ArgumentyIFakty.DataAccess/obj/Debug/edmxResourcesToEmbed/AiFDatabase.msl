@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AiFArchiveModelStoreContainer" CdmEntityContainer="AiFArchiveEntities">
+    <EntitySetMapping Name="Articles">
+      <EntityTypeMapping TypeName="AiFArchiveModel.Article">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="IsQuestionAnswer" ColumnName="IsQuestionAnswer" />
+          <ScalarProperty Name="EditionName" ColumnName="EditionName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="DatePublished" ColumnName="DatePublished" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="Context" ColumnName="Context" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

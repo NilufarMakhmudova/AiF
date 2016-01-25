@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AiFArchiveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="DatePublished" Type="date" Nullable="false" />
+    <Property Name="Author" Type="nvarchar" MaxLength="500" />
+    <Property Name="Context" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Url" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="EditionName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="isQuestionAnswer" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'AiFArchive.dbo.ArticlesWithWordMigra' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ArticlesWithWordMigra">
+    <Key>
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="DatePublished" />
+      <PropertyRef Name="Context" />
+      <PropertyRef Name="Url" />
+      <PropertyRef Name="EditionName" />
+    </Key>
+    <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="DatePublished" Type="date" Nullable="false" />
+    <Property Name="Author" Type="nvarchar" MaxLength="500" />
+    <Property Name="Context" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Url" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="EditionName" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="AiFArchiveModelStoreContainer">
+    <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ArticlesWithWordMigra" EntityType="Self.ArticlesWithWordMigra" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ArticlesWithWordMigra].[Title] AS [Title], 
+    [ArticlesWithWordMigra].[DatePublished] AS [DatePublished], 
+    [ArticlesWithWordMigra].[Author] AS [Author], 
+    [ArticlesWithWordMigra].[Context] AS [Context], 
+    [ArticlesWithWordMigra].[Url] AS [Url], 
+    [ArticlesWithWordMigra].[EditionName] AS [EditionName]
+    FROM [dbo].[ArticlesWithWordMigra] AS [ArticlesWithWordMigra]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

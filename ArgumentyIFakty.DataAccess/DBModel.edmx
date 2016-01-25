@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AiFArchiveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="DatePublished" Type="date" Nullable="false" />
+          <Property Name="Author" Type="nvarchar" MaxLength="500" />
+          <Property Name="Context" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="EditionName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="isQuestionAnswer" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AiFArchive.dbo.ArticlesWithWordMigra' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ArticlesWithWordMigra">
+          <Key>
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="DatePublished" />
+            <PropertyRef Name="Context" />
+            <PropertyRef Name="Url" />
+            <PropertyRef Name="EditionName" />
+          </Key>
+          <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="DatePublished" Type="date" Nullable="false" />
+          <Property Name="Author" Type="nvarchar" MaxLength="500" />
+          <Property Name="Context" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="EditionName" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="AiFArchiveModelStoreContainer">
+          <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArticlesWithWordMigra" EntityType="Self.ArticlesWithWordMigra" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ArticlesWithWordMigra].[Title] AS [Title], 
+    [ArticlesWithWordMigra].[DatePublished] AS [DatePublished], 
+    [ArticlesWithWordMigra].[Author] AS [Author], 
+    [ArticlesWithWordMigra].[Context] AS [Context], 
+    [ArticlesWithWordMigra].[Url] AS [Url], 
+    [ArticlesWithWordMigra].[EditionName] AS [EditionName]
+    FROM [dbo].[ArticlesWithWordMigra] AS [ArticlesWithWordMigra]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AiFArchiveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DatePublished" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Author" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Context" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EditionName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isQuestionAnswer" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="AiFArchiveEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Articles" EntityType="Self.Article" />
+          <EntitySet Name="ArticlesWithWordMigras" EntityType="AiFArchiveModel.ArticlesWithWordMigra" />
+        </EntityContainer>
+        <EntityType Name="ArticlesWithWordMigra">
+          <Key>
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="DatePublished" />
+            <PropertyRef Name="Context" />
+            <PropertyRef Name="Url" />
+            <PropertyRef Name="EditionName" />
+          </Key>
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DatePublished" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Author" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Context" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EditionName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AiFArchiveModelStoreContainer" CdmEntityContainer="AiFArchiveEntities">
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="AiFArchiveModel.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DatePublished" ColumnName="DatePublished" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Context" ColumnName="Context" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="EditionName" ColumnName="EditionName" />
+                <ScalarProperty Name="isQuestionAnswer" ColumnName="isQuestionAnswer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArticlesWithWordMigras">
+            <EntityTypeMapping TypeName="AiFArchiveModel.ArticlesWithWordMigra">
+              <MappingFragment StoreEntitySet="ArticlesWithWordMigra">
+                <ScalarProperty Name="EditionName" ColumnName="EditionName" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Context" ColumnName="Context" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="DatePublished" ColumnName="DatePublished" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
